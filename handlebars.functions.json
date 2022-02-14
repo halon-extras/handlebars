@@ -6,9 +6,7 @@
                 {
                     "name": "template",
                     "type": "string"
-                }
-            ],
-            "optional": [
+                },
                 {
                     "name": "context",
                     "type": "array"
