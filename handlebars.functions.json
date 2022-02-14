@@ -1,0 +1,24 @@
+[
+    {
+        "name": "handlebars",
+        "parameters": {
+            "required": [
+                {
+                    "name": "template",
+                    "type": "string"
+                }
+            ],
+            "optional": [
+                {
+                    "name": "context",
+                    "type": "array"
+                }
+            ]
+        },
+        "returnType": "string",
+        "detail": "handlebars(string $template, array $context]): string",
+        "value": "handlebars($0)",
+        "documentation": "Render a handlebars template. A successful render will return an associative array with a \"result\" key that contains the HTML. On error an associative array with a \"error\" key will be provided.",
+        "link": "[Full documentation](https://github.com/halon-extras/handlebars)"
+    }
+]

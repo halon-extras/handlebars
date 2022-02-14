@@ -1,0 +1,12 @@
+$template = ''<div>
+  <h1>{{title}}</h1>
+  <div class="body">
+    {{body}}
+  </div>
+</div>
+'';
+
+echo handlebars($template, [
+    "title" => "This is my title",
+    "body" =>  "This is my body"
+]);
