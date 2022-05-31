@@ -1,28 +1,61 @@
-version: "5.8"
-servers:
-  - id: default
-    transport: mx
-transportgroups:
-  - id: default
-    connection:
-      sourceip:
-        ipv6: false
-    retry:
-      count: 30
-      intervals:
-        - interval: 60
-        - interval: 900
-        - interval: 3600
-          notify: true
-        - interval: 7200
-        - interval: 10800
-    dsn:
-      transport: mx
-    transports:
-      - id: mx
-        session:
-          tls:
-            mode: dane
 resolver:
   cache:
     size: 10000
+scripting:
+  files:
+  - data: |-
+      $template = ''<div>
+        <h1>{{title}}</h1>
+        <div class="body">
+          {{body}}
+        </div>
+      </div>
+      '';
+
+      echo handlebars($template, [
+          "title" => "This is my title",
+          "body" =>  "This is my body"
+      ]);
+    id: test.hsl
+  hooks:
+    eod:
+    - data: |
+        $transactionid = $transaction["id"];
+        $sender = $transaction["senderaddress"];
+        $recipients = $transaction["recipients"];
+        $mail = $arguments["mail"];
+
+        // Queue message for all recipients
+        foreach ($recipients as $recipient)
+            $mail->queue($sender, $recipient["address"], $recipient["transportid"]);
+
+        Accept();
+      id: default
+servers:
+- id: default
+  phases:
+    eod:
+      hook: default
+  transport: mx
+transportgroups:
+- connection:
+    sourceip:
+      ipv6: false
+  dsn:
+    transport: mx
+  id: default
+  retry:
+    count: 30
+    intervals:
+    - interval: 60
+    - interval: 900
+    - interval: 3600
+      notify: true
+    - interval: 7200
+    - interval: 10800
+  transports:
+  - id: mx
+    session:
+      tls:
+        mode: dane
+version: '5.9'
