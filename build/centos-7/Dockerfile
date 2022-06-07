@@ -34,6 +34,7 @@ RUN cd /tmp/halon \
     && tar -C /usr/local -xzf go1.17.6.linux-amd64.tar.gz
 
 RUN mkdir /licenses
+RUN cp /usr/local/go/LICENSE /licenses/LICENSE.go
 RUN cd /tmp/halon \
     && curl -O -L https://raw.githubusercontent.com/aymerick/raymond/master/LICENSE \
     && cp LICENSE /licenses/LICENSE.raymond

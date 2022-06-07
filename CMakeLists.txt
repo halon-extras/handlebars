@@ -44,6 +44,7 @@ INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/handlebars.so.link" DESTINATION plugi
 INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/handlebars.so.link" DESTINATION plugins/autoload/hsh RENAME handlebars.so)
 
 INSTALL(FILES "LICENSE" DESTINATION share/doc/plugins/handlebars)
+INSTALL(FILES "/licenses/LICENSE.go" DESTINATION share/doc/plugins/handlebars)
 INSTALL(FILES "/licenses/LICENSE.raymond" DESTINATION share/doc/plugins/handlebars)
 
 SET(CMAKE_INSTALL_PREFIX "/opt/halon")
