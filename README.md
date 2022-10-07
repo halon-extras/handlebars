@@ -36,6 +36,8 @@ A successful render will return an associative array with a `result` key that co
 **Example**
 
 ```
+import { handlebars } from "extras://handlebars";
+
 $template = ''<div>
   <h1>{{title}}</h1>
   <div class="body">

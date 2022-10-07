@@ -88,5 +88,6 @@ func handlebars(hhc *C.HalonHSLContext, args *C.HalonHSLArguments, ret *C.HalonH
 func Halon_hsl_register(hhrc *C.HalonHSLRegisterContext) C.bool {
 	handlebars_cs := C.CString("handlebars")
 	C.HalonMTA_hsl_register_function(hhrc, handlebars_cs, nil)
+	C.HalonMTA_hsl_module_register_function(hhrc, handlebars_cs, nil)
 	return true
 }
