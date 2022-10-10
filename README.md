@@ -20,6 +20,8 @@ yum install halon-extras-handlebars
 
 ## Exported functions
 
+These functions needs to be [imported](https://docs.halon.io/hsl/structures.html#import) from the `extras://handlebars` module path.
+
 ### handlebars(template, context)
 
 Render a handlebars template.
