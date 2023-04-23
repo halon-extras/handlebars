@@ -60,10 +60,10 @@ func handlebars(hhc *C.HalonHSLContext, args *C.HalonHSLArguments, ret *C.HalonH
 	var args_1 = C.HalonMTA_hsl_argument_get(args, 1)
 	if args_1 != nil {
 		var context_cs *C.char
-		defer C.free(unsafe.Pointer(context_cs))
 		var context_size_t C.size_t
 		var success = C.HalonMTA_hsl_value_to_json(args_1, &context_cs, &context_size_t)
 		context_str = C.GoString(context_cs)
+		C.free(unsafe.Pointer(context_cs))
 		if !success {
 			set_ret_value(ret, "error", context_str)
 			return
