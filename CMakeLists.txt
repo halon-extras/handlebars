@@ -45,7 +45,7 @@ ENDIF()
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/handlebars.so DESTINATION plugins)
 INSTALL(FILES handlebars.functions.json DESTINATION share/plugins)
 
-INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/sbom.json" DESTINATION /opt/halon/share/sbom RENAME ${PROJECT_NAME}.json)
+INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/sbom.json" DESTINATION share/sbom/plugins RENAME ${PROJECT_NAME}.json)
 
 IF(${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.14.0") 
 	FILE(CREATE_LINK "/opt/halon/plugins/handlebars.so" "${CMAKE_CURRENT_BINARY_DIR}/handlebars.so.link" SYMBOLIC)
